@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const navItems = [
-  { label: 'El Estudio',        href: '/' },
+  { label: 'Inicio',            href: '/' },
+  { label: 'El Estudio',        href: '/el-estudio' },
   { label: 'Equipo',            href: '/equipo' },
   { label: 'Áreas de Práctica', href: '/areas-de-practica' },
   { label: 'Noticias',          href: '/noticias' },

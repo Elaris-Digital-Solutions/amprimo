@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const navLinks = [
-  { label: 'El Estudio',        href: '/' },
+  { label: 'El Estudio',        href: '/el-estudio' },
   { label: 'Nuestro Equipo',    href: '/equipo' },
   { label: 'Áreas de Práctica', href: '/areas-de-practica' },
   { label: 'Noticias',          href: '/noticias' },
@@ -9,13 +9,16 @@ const navLinks = [
 ]
 
 const practiceLinks = [
-  'Derecho Constitucional',
-  'Derecho Corporativo',
-  'Litigios y Arbitraje',
-  'Derecho Administrativo',
-  'Derecho Tributario',
-  'Derecho Laboral',
-  'Derecho Inmobiliario',
+  { label: 'Derecho Constitucional',                    href: '/areas-de-practica/derecho-constitucional' },
+  { label: 'Procesal, Controversias y Arbitraje',       href: '/areas-de-practica/procesal-solucion-de-controversias-y-arbitraje' },
+  { label: 'Derecho Corporativo y Patrimonial',         href: '/areas-de-practica/derecho-corporativo-y-patrimonial' },
+  { label: 'Inversiones y Recursos Naturales',          href: '/areas-de-practica/inversiones-regulaciones-y-recursos-naturales' },
+  { label: 'Derecho Administrativo',                    href: '/areas-de-practica/derecho-administrativo-y-contratacion-publica' },
+  { label: 'Derecho Tributario y Financiero',           href: '/areas-de-practica/derecho-tributario-y-financiero' },
+  { label: 'Derecho Laboral',                           href: '/areas-de-practica/derecho-laboral' },
+  { label: 'Competencia y Propiedad Intelectual',       href: '/areas-de-practica/derecho-de-la-competencia-y-propiedad-intelectual' },
+  { label: 'Derecho de Familia',                        href: '/areas-de-practica/derecho-de-familia' },
+  { label: 'Derecho Inmobiliario',                      href: '/areas-de-practica/derecho-inmobiliario' },
 ]
 
 export default function Footer() {
@@ -87,9 +90,9 @@ export default function Footer() {
             <h4 className="text-white text-xs uppercase tracking-widest font-semibold mb-6">Áreas de Práctica</h4>
             <ul className="space-y-3">
               {practiceLinks.map(item => (
-                <li key={item}>
-                  <Link href="/areas-de-practica" className="text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
-                    {item}
+                <li key={item.href}>
+                  <Link href={item.href} className="text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
+                    {item.label}
                   </Link>
                 </li>
               ))}
