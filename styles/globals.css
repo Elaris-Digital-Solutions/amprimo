@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-navy-900 font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-navy-500 text-white;
+  }
+
+  /* Scrollbar elegante */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-navy-500 rounded-full;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-gold-500 uppercase tracking-widest2 text-xs font-semibold font-sans;
+  }
+
+  .section-title {
+    @apply font-serif text-navy-900 leading-tight;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 bg-navy-700 text-white text-sm font-semibold tracking-wide
+           transition-all duration-300 hover:bg-navy-800 hover:shadow-lg hover:shadow-navy-700/20
+           active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 border border-navy-600 text-navy-600 text-sm font-semibold
+           tracking-wide transition-all duration-300 hover:bg-navy-700 hover:text-white hover:border-navy-700
+           active:scale-[0.98];
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 border border-white/40 text-white text-sm font-semibold
+           tracking-wide transition-all duration-300 hover:border-white hover:bg-white/10
+           active:scale-[0.98];
+  }
+
+  .nav-link {
+    @apply relative text-sm font-medium tracking-wide transition-colors duration-200
+           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px
+           after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .divider-gold {
+    @apply w-12 h-px bg-gold-500;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .input-field {
+    @apply w-full bg-transparent border-b border-navy-200 py-3 text-navy-900 text-sm
+           placeholder-navy-400 focus:outline-none focus:border-gold-500
+           transition-colors duration-200;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Líneas decorativas en títulos */
+.title-line::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: #2b7bb5;
+  margin-bottom: 1rem;
+}
+
+/* Hover en cards de práctica */
+.practice-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #2b7bb5;
+  transition: width 0.4s ease;
+}
+
+.practice-card:hover::after {
+  width: 100%;
+}
+
+/* Pattern geométrico sutil para hero */
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 40%);
+}
+
+/* Overlay gradiente en fotos del equipo */
+.team-photo-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(13, 27, 42, 0.92) 0%,
+    rgba(13, 27, 42, 0.4) 50%,
+    transparent 100%
+  );
+}
