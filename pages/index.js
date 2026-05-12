@@ -14,6 +14,7 @@ export default function Home() {
         <meta name="description" content="Firma boutique de alto perfil especializada en derecho constitucional, litigios y asesoría corporativa. Reconocida por Chambers & Partners, Legal 500, Best Lawyers y Leaders League." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" as="image" href="/images/hero-inicio.webp" type="image/webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

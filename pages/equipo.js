@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import Navbar      from '../components/Navbar'
-import PageHeader  from '../components/PageHeader'
-import Team        from '../components/Team'
-import Footer      from '../components/Footer'
+import Navbar from '../components/Navbar'
+import Team   from '../components/Team'
+import Footer from '../components/Footer'
 
 export default function EquipoPage() {
   return (
@@ -11,6 +10,7 @@ export default function EquipoPage() {
         <title>Equipo | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
         <meta name="description" content="Conoce a los socios y asociados de Amprimo, Flury, Barboza & Rodríguez Abogados. Un equipo de abogados con amplia experiencia en todas las áreas del derecho." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preload" as="image" href="/images/hero-contactanos.webp" type="image/webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -19,11 +19,29 @@ export default function EquipoPage() {
       <Navbar />
 
       <main>
-        <PageHeader
-          label="Directorio"
-          title="Nuestro Equipo"
-          subtitle="Nuestra excelencia se sustenta en la sólida formación y amplia experiencia de nuestros abogados, quienes han ocupado cargos de alta responsabilidad en la administración pública y el sector privado."
-        />
+        <section className="relative min-h-[65vh] flex items-end overflow-hidden">
+          <img
+            src="/images/hero-contactanos.webp"
+            alt="Nuestro Equipo"
+            fetchpriority="high"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/65 to-navy-900/40" />
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-16 lg:pb-24 w-full">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-8 h-px bg-white/60" />
+              <span className="text-white/80 text-xs uppercase tracking-widest2 font-semibold font-sans">Directorio</span>
+            </div>
+            <h1 className="font-serif text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] mb-4">
+              Nuestro Equipo
+            </h1>
+            <p className="text-white/55 text-base lg:text-lg leading-relaxed mt-4 max-w-3xl">
+              Nuestra excelencia se sustenta en la sólida formación y amplia experiencia de nuestros
+              abogados, quienes han ocupado cargos de alta responsabilidad en la administración pública
+              y el sector privado.
+            </p>
+          </div>
+        </section>
         <Team />
       </main>
 

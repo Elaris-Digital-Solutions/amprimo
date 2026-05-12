@@ -90,6 +90,7 @@ export default function ElEstudio() {
         <title>El Estudio | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
         <meta name="description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas desde 2007." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preload" as="image" href="/images/hero-el-estudio.webp" type="image/webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -100,27 +101,27 @@ export default function ElEstudio() {
       <main>
 
         {/* ── 1. Hero ─────────────────────────────────────────── */}
-        <section className="relative min-h-[80vh] flex items-end overflow-hidden">
+        <section className="relative min-h-[65vh] flex items-end overflow-hidden">
           <img
             src="/images/hero-el-estudio.webp"
             alt="Amprimo Abogados"
+            fetchpriority="high"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/65 to-navy-900/40" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28 w-full">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-8 h-px bg-gold-500" />
-              <span className="section-label">El Estudio</span>
+              <div className="w-8 h-px bg-white/60" />
+              <span className="text-white/80 text-xs uppercase tracking-widest2 font-semibold font-sans">El Estudio</span>
             </div>
             <h1 className="font-serif text-white text-3xl sm:text-4xl lg:text-[3.25rem] font-medium max-w-3xl leading-tight">
-              Especialistas en asesoría legal para empresas privadas y entidades públicas
+              El Estudio
             </h1>
-            <p className="mt-6 text-white/65 text-base lg:text-lg max-w-2xl leading-relaxed font-light">
-              Nuestra firma está compuesta por experimentados abogados que ofrecen servicios de consultoría
-              legal tanto en el ámbito privado como en el público. Nuestra misión es mantenernos a la
-              vanguardia y destacar en múltiples áreas del derecho, con un enfoque particular en la
-              resolución de disputas y arbitrajes.
+            <p className="mt-6 text-white/65 text-base lg:text-lg max-w-3xl leading-relaxed font-light">
+              Especialistas en asesoría legal para empresas privadas y entidades públicas.
+              Con más de 17 años de trayectoria, combinamos experiencia técnica y un profundo
+              conocimiento del sistema legal peruano para ofrecer soluciones efectivas y personalizadas.
             </p>
           </div>
         </section>
