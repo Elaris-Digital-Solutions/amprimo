@@ -88,8 +88,20 @@ export default function ElEstudio() {
     <>
       <Head>
         <title>El Estudio | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas desde 2007." />
+        <meta name="description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Más de 19 años de trayectoria en Lima, Perú." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://amprimo.netlify.app/el-estudio" />
+        <meta property="og:title" content="El Estudio | Amprimo, Flury, Barboza & Rodríguez Abogados" />
+        <meta property="og:description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Más de 19 años de trayectoria en Lima, Perú." />
+        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Amprimo, Flury, Barboza & Rodríguez Abogados" />
+        <meta property="og:site_name" content="Amprimo Abogados" />
+        <meta property="og:locale" content="es_PE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
         <link rel="preload" as="image" href="/images/hero-el-estudio.webp" type="image/webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

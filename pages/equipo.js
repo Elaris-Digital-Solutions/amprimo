@@ -10,6 +10,18 @@ export default function EquipoPage() {
         <title>Equipo | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
         <meta name="description" content="Conoce a los socios y asociados de Amprimo, Flury, Barboza & Rodríguez Abogados. Un equipo de abogados con amplia experiencia en todas las áreas del derecho." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://amprimo.netlify.app/equipo" />
+        <meta property="og:title" content="Equipo | Amprimo, Flury, Barboza & Rodríguez Abogados" />
+        <meta property="og:description" content="Conoce a los socios y asociados de Amprimo, Flury, Barboza & Rodríguez Abogados. Amplia experiencia en todas las áreas del derecho." />
+        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Amprimo, Flury, Barboza & Rodríguez Abogados" />
+        <meta property="og:site_name" content="Amprimo Abogados" />
+        <meta property="og:locale" content="es_PE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
         <link rel="preload" as="image" href="/images/hero-contactanos.webp" type="image/webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
