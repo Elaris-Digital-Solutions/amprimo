@@ -278,7 +278,7 @@ export default function ElEstudio() {
         </section>
 
         {/* ── 5. Logros y reconocimientos ─────────────────────── */}
-        <section className="bg-navy-950 py-20 lg:py-24 relative overflow-hidden" data-observe>
+        <section id="logros-y-reconocimientos" className="bg-navy-950 py-20 lg:py-24 relative overflow-hidden" data-observe>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(43,123,181,0.08),transparent_60%)]" />
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
 

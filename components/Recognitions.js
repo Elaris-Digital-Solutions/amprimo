@@ -65,7 +65,7 @@ export default function Recognitions() {
               principales del mercado peruano.
             </p>
             <Link
-              href="/noticias"
+              href="/el-estudio#logros-y-reconocimientos"
               className="animate-on-scroll inline-flex items-center gap-2 text-gold-400 text-xs uppercase tracking-widest font-semibold hover:text-gold-300 transition-colors duration-200"
             >
               Ver más
