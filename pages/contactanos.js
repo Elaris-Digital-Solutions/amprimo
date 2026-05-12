@@ -26,7 +26,7 @@ export default function ContactanosPage() {
       <Navbar />
 
       <main>
-        <section className="relative min-h-[65vh] flex items-end overflow-hidden">
+        <section className="relative mt-20 min-h-[65vh] flex items-end overflow-hidden">
           <img
             src="/images/hero-contactanos.webp"
             alt="Contáctanos"

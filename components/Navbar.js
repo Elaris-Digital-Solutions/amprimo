@@ -42,7 +42,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
           ${scrolled
             ? 'bg-navy-950 shadow-lg shadow-black/20 py-3'
-            : 'bg-navy-950/90 py-5'
+            : 'bg-navy-950 py-5'
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">

@@ -6,17 +6,8 @@ const chambersQuotes = [
   'Highly adept at advising on regulatory and intellectual property mandates.',
 ]
 
-const stats = [
-  { value: 17, suffix: '',  label: 'Años en el Mercado' },
-  { value: 16, suffix: '',  label: 'Áreas de Práctica' },
-  { value: 49, suffix: '%', label: 'Presencia Femenina' },
-  { value: 85, suffix: '%', label: 'Casos Exitosos' },
-]
-
 export default function About() {
   const sectionRef = useRef(null)
-  const [counts, setCounts] = useState(stats.map(() => 0))
-  const hasAnimated = useRef(false)
   const [quoteIndex, setQuoteIndex] = useState(0)
   const [quoteFading, setQuoteFading] = useState(false)
 
@@ -33,24 +24,9 @@ export default function About() {
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // animate-on-scroll elements
             entry.target.querySelectorAll('.animate-on-scroll').forEach((el, i) => {
               setTimeout(() => el.classList.add('visible'), i * 120)
             })
-
-            // counter animation (only once)
-            if (!hasAnimated.current) {
-              hasAnimated.current = true
-              const duration = 1800
-              const startTime = performance.now()
-              const frame = (now) => {
-                const progress = Math.min((now - startTime) / duration, 1)
-                const ease = 1 - Math.pow(1 - progress, 3)
-                setCounts(stats.map(s => Math.round(ease * s.value)))
-                if (progress < 1) requestAnimationFrame(frame)
-              }
-              requestAnimationFrame(frame)
-            }
           }
         })
       },
@@ -62,27 +38,6 @@ export default function About() {
 
   return (
     <section id="estudio" ref={sectionRef} className="bg-white">
-
-      {/* Stats — fondo marino */}
-      <div className="bg-navy-950 py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 lg:divide-x lg:divide-white/10">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className="animate-on-scroll flex flex-col items-center text-center lg:px-10"
-              >
-                <span className="font-serif text-5xl lg:text-6xl font-semibold text-white mb-2">
-                  {counts[i]}{s.suffix}
-                </span>
-                <span className="text-white/45 text-xs uppercase tracking-widest font-sans leading-snug">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Contenido principal */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
