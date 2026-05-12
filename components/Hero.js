@@ -19,11 +19,17 @@ export default function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden bg-navy-950"
+      className="relative overflow-hidden bg-navy-950 min-h-screen"
       id="inicio"
     >
-      {/* Fondo: gradiente diagonal */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-[#0f2035]" />
+      {/* Fondo: imagen hero */}
+      <img
+        src="/images/hero-inicio.webp"
+        alt=""
+        fetchpriority="high"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-900/30" />
 
       {/* Línea decorativa izquierda */}
       <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold-500/30 to-transparent" />

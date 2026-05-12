@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Navbar        from '../components/Navbar'
-import PageHeader    from '../components/PageHeader'
 import PracticeAreas from '../components/PracticeAreas'
 import Footer        from '../components/Footer'
 
@@ -19,12 +18,28 @@ export default function AreasDePracticaPage() {
       <Navbar />
 
       <main>
-        <PageHeader
-          label="Práctica Legal"
-          title="Áreas de Práctica"
-          subtitle="A través de nuestras diez áreas de práctica, brindamos una asesoría legal completa y especializada que cubre todos los aspectos legales esenciales para el éxito y desarrollo de negocios en el Perú. Nuestro objetivo es proporcionar un conocimiento profundo y orientación legal en una variedad de áreas, para contribuir al éxito sostenible de nuestros clientes en el país."
-          subtitleMaxW="max-w-[60rem]"
-        />
+        <section className="relative min-h-[65vh] flex items-end overflow-hidden">
+          <img
+            src="/images/hero-areas-especializacion.webp"
+            alt="Áreas de Práctica"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/65 to-navy-900/40" />
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-16 lg:pb-24 w-full">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-8 h-px bg-gold-500" />
+              <span className="section-label">Práctica Legal</span>
+            </div>
+            <h1 className="font-serif text-white text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] mb-4">
+              Áreas de Práctica
+            </h1>
+            <p className="text-white/55 text-base lg:text-lg leading-relaxed mt-4 max-w-3xl">
+              A través de nuestras diez áreas de práctica, brindamos una asesoría legal completa
+              y especializada que cubre todos los aspectos legales esenciales para el éxito y
+              desarrollo de negocios en el Perú.
+            </p>
+          </div>
+        </section>
         <PracticeAreas preview={false} />
       </main>
 

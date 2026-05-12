@@ -102,7 +102,7 @@ export default function ElEstudio() {
         {/* ── 1. Hero ─────────────────────────────────────────── */}
         <section className="relative min-h-[80vh] flex items-end overflow-hidden">
           <img
-            src="/images/amprimo inicio.webp"
+            src="/images/hero-el-estudio.webp"
             alt="Amprimo Abogados"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
