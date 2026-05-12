@@ -148,7 +148,7 @@ export default function About() {
 
             <div className="mt-6 flex-1 flex flex-col p-6 border border-navy-100 bg-white relative">
               <div
-                className="flex-1 transition-opacity duration-[280ms]"
+                className="flex-1 min-h-[10rem] transition-opacity duration-[280ms]"
                 style={{ opacity: quoteFading ? 0 : 1 }}
               >
                 <p className="font-serif text-navy-700 text-base italic leading-relaxed mb-3">

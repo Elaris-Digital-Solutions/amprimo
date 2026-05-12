@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {},
+  experimental: { scrollRestoration: true },
   webpack: (config) => {
     return config;
   },

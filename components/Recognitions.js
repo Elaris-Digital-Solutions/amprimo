@@ -76,14 +76,14 @@ export default function Recognitions() {
           </div>
 
           {/* Columna derecha: logos — 55% */}
-          <div className="animate-on-scroll flex items-center justify-around w-full lg:w-[45%] gap-10">
+          <div className="animate-on-scroll grid grid-cols-3 gap-3 w-full lg:flex lg:w-[45%] lg:items-center lg:justify-around lg:gap-10">
             {logos.map(logo => (
               <img
                 key={logo.alt}
                 src={logo.src}
                 alt={logo.alt}
                 style={logo.style}
-                className="h-36 lg:h-40 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+                className="w-full h-auto max-h-24 sm:max-h-32 lg:max-h-none lg:h-40 lg:w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
               />
             ))}
           </div>
