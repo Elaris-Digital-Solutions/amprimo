@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 const stats = [
-  { value: 17, suffix: '',  label: 'Años en el Mercado' },
+  { value: 19, suffix: '',  label: 'Años en el Mercado' },
   { value: 16, suffix: '',  label: 'Áreas de Práctica' },
   { value: 49, suffix: '%', label: 'Presencia Femenina' },
   { value: 85, suffix: '%', label: 'Casos Exitosos' },
@@ -52,11 +52,6 @@ export default function Hero() {
       {/* Líneas decorativas */}
       <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold-500/30 to-transparent" />
       <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold-500/15 to-transparent hidden lg:block" />
-
-      {/* Número decorativo de fondo */}
-      <div className="absolute right-8 bottom-40 font-serif text-[12rem] font-bold text-white/[0.025] leading-none select-none pointer-events-none hidden xl:block">
-        17
-      </div>
 
       {/* Área de contenido — flex-1 para que ocupe exactamente el espacio sobre las métricas */}
       <div className="relative z-10 flex-1 min-h-0">
