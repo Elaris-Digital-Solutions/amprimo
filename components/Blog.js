@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { hoverPrefetch } from '../lib/prefetchHero'
 
 const posts = [
   {
@@ -99,6 +100,7 @@ export default function Blog({ preview = false }) {
           </div>
           <Link
             href="/noticias"
+            {...hoverPrefetch('/noticias')}
             className="animate-on-scroll btn-outline self-start lg:self-auto"
           >
             Ver todas

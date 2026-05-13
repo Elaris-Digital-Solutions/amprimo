@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import Link from 'next/link'
+import { hoverPrefetch } from '../lib/prefetchHero'
 
 const chambersQuotes = [
   'A reliable firm offering support and reassurance to its clients. Very serious and committed in the attention they give to the matters and the information they provide.',
@@ -62,7 +63,7 @@ export default function About() {
               soluciones integrales y personalizadas a nuestros clientes.
             </p>
 
-            <Link href="/equipo" className="animate-on-scroll btn-primary">
+            <Link href="/equipo" {...hoverPrefetch('/equipo')} className="animate-on-scroll btn-primary">
               Conocer el Equipo
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

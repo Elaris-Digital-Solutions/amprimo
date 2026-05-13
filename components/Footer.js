@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { hoverPrefetch } from '../lib/prefetchHero'
 
 const navLinks = [
   { label: 'El Estudio',        href: '/el-estudio' },
@@ -77,7 +78,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map(item => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
+                  <Link href={item.href} {...hoverPrefetch(item.href)} className="text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
                     {item.label}
                   </Link>
                 </li>
@@ -91,7 +92,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {practiceLinks.map(item => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
+                  <Link href={item.href} {...hoverPrefetch(item.href)} className="text-white/50 text-sm hover:text-gold-400 transition-colors duration-200">
                     {item.label}
                   </Link>
                 </li>

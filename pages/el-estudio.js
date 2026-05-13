@@ -113,7 +113,7 @@ export default function ElEstudio() {
       <main>
 
         {/* ── 1. Hero ─────────────────────────────────────────── */}
-        <section className="relative mt-20 min-h-[65vh] flex items-end overflow-hidden">
+        <section className="relative mt-20 min-h-[65vh] flex items-end overflow-hidden bg-navy-950">
           <img
             src="/images/hero-el-estudio.webp"
             alt="Amprimo Abogados"

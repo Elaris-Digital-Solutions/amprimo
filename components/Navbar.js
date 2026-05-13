@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { hoverPrefetch } from '../lib/prefetchHero'
 
 const navItems = [
   { label: 'Inicio',            href: '/' },
@@ -45,7 +46,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" {...hoverPrefetch('/')}>
             <img
               src="/images/amprimo-logo.webp"
               alt="Amprimo Abogados"
@@ -59,6 +60,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
+                {...hoverPrefetch(item.href)}
                 className={`nav-link text-[0.8rem] uppercase tracking-widest font-medium transition-colors duration-200
                   after:bg-gold-500
                   ${isActive(item.href)
@@ -95,6 +97,7 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
+              {...hoverPrefetch(item.href)}
               className={`font-serif text-3xl transition-colors duration-200
                 ${isActive(item.href) ? 'text-white' : 'text-white/70 hover:text-white'}`}
               style={{ transitionDelay: `${i * 60}ms` }}

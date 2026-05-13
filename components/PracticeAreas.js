@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { hoverPrefetch } from '../lib/prefetchHero'
 
 const areas = [
   {
@@ -279,7 +280,7 @@ export default function PracticeAreas({ preview = false }) {
         {/* Botón "ver todas" en preview */}
         {preview && (
           <div className="mt-10 text-center">
-            <Link href="/areas-de-practica" className="btn-outline">
+            <Link href="/areas-de-practica" {...hoverPrefetch('/areas-de-practica')} className="btn-outline">
               Ver todas las áreas
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
