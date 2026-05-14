@@ -110,13 +110,14 @@ export default function ElEstudio() {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
 
         {/* ── 1. Hero ─────────────────────────────────────────── */}
         <section className="relative mt-20 min-h-[65vh] flex items-end overflow-hidden bg-navy-950">
           <img
             src="/images/hero-el-estudio.webp"
-            alt="Amprimo Abogados"
+            alt=""
+            aria-hidden="true"
             fetchpriority="high"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />

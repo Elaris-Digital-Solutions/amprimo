@@ -41,6 +41,9 @@ export default function Hero() {
       className="relative mt-20 overflow-hidden bg-navy-950 h-[calc(100vh-5rem)] flex flex-col"
       id="inicio"
     >
+      {/* H1 para accesibilidad y SEO (visible solo para screen readers) */}
+      <h1 className="sr-only">Amprimo, Flury, Barboza &amp; Rodríguez Abogados</h1>
+
       {/* Fondo: imagen hero */}
       <img
         src="/images/hero-inicio.webp"
@@ -79,7 +82,8 @@ export default function Hero() {
             >
               <img
                 src="/images/amprimo-logo.webp"
-                alt="Amprimo, Flury, Barboza & Rodríguez Abogados"
+                alt=""
+                aria-hidden="true"
                 className="h-16 lg:h-24 w-auto"
               />
             </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useId } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { hoverPrefetch } from '../lib/prefetchHero'
@@ -16,6 +16,9 @@ export default function Navbar() {
   const [scrolled,  setScrolled]  = useState(false)
   const [menuOpen,  setMenuOpen]  = useState(false)
   const router = useRouter()
+  const menuId = useId()
+  const triggerRef = useRef(null)
+  const firstLinkRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
@@ -31,6 +34,23 @@ export default function Navbar() {
 
   // Cerrar menú al navegar
   useEffect(() => { setMenuOpen(false) }, [router.pathname])
+
+  // Escape cierra el menú + bloqueo de scroll del body + foco al primer link
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') { setMenuOpen(false); triggerRef.current?.focus() }
+    }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    // Mover foco al primer link del menú
+    const t = setTimeout(() => firstLinkRef.current?.focus(), 50)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+      clearTimeout(t)
+    }
+  }, [menuOpen])
 
   const isActive = (href) => {
     if (href === '/') return router.pathname === '/'
@@ -55,56 +75,74 @@ export default function Navbar() {
           </Link>
 
           {/* Navegación desktop */}
-          <nav className="hidden lg:flex items-center gap-8 ml-auto">
-            {navItems.map(item => (
-              <Link
-                key={item.href}
-                href={item.href}
-                {...hoverPrefetch(item.href)}
-                className={`nav-link text-[0.8rem] uppercase tracking-widest font-medium transition-colors duration-200
-                  after:bg-gold-500
-                  ${isActive(item.href)
-                    ? 'text-white after:w-full'
-                    : 'text-white/75 hover:text-white'}`}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav aria-label="Principal" className="hidden lg:block ml-auto">
+            <ul className="flex items-center gap-8">
+              {navItems.map(item => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    {...hoverPrefetch(item.href)}
+                    aria-current={isActive(item.href) ? 'page' : undefined}
+                    className={`nav-link text-[0.8rem] uppercase tracking-widest font-medium transition-colors duration-200
+                      after:bg-gold-500
+                      ${isActive(item.href)
+                        ? 'text-white after:w-full'
+                        : 'text-white/75 hover:text-white'}`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
           {/* Hamburger mobile */}
           <button
-            className="lg:hidden flex flex-col gap-1.5 p-1"
+            ref={triggerRef}
+            type="button"
+            className="lg:hidden flex flex-col gap-1.5 p-2 min-w-[44px] min-h-[44px] items-center justify-center"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menú"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
           >
-            <span className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
-            <span className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+            <span aria-hidden="true" className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
+            <span aria-hidden="true" className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+            <span aria-hidden="true" className={`block w-6 h-px bg-white transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
           </button>
         </div>
       </header>
 
       {/* Mobile Menu */}
       <div
+        id={menuId}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú de navegación"
+        hidden={!menuOpen}
         className={`fixed inset-0 z-40 bg-navy-950 flex flex-col justify-center px-10 transition-all duration-500
           ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
       >
-        <div className="absolute top-0 left-0 right-0 h-px bg-gold-500/30" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gold-500/30" aria-hidden="true" />
 
-        <nav className="flex flex-col gap-8">
-          {navItems.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              {...hoverPrefetch(item.href)}
-              className={`font-serif text-3xl transition-colors duration-200
-                ${isActive(item.href) ? 'text-white' : 'text-white/70 hover:text-white'}`}
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav aria-label="Principal">
+          <ul className="flex flex-col gap-8">
+            {navItems.map((item, i) => (
+              <li key={item.href}>
+                <Link
+                  ref={i === 0 ? firstLinkRef : null}
+                  href={item.href}
+                  {...hoverPrefetch(item.href)}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`font-serif text-3xl transition-colors duration-200
+                    ${isActive(item.href) ? 'text-white' : 'text-white/70 hover:text-white'}`}
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
 
         <div className="mt-12 pt-10 border-t border-white/10">

@@ -15,6 +15,7 @@ export default function Document() {
         <meta name="theme-color" content="#0a1628" />
       </Head>
       <body>
+        <a href="#main-content" className="skip-link">Saltar al contenido principal</a>
         <Main />
         <NextScript />
       </body>

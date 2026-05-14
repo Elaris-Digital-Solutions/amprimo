@@ -32,7 +32,7 @@ export default function PoliticaDeDatos() {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <PageHeader
           label="Legal"
           title="Política de Datos"

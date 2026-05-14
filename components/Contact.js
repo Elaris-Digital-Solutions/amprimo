@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef, useState, useCallback, useId, cloneElement } from 'react'
 
 const motives = [
   'Deseo agendar una reunión con un especialista',
@@ -10,25 +10,33 @@ const motives = [
 /* ─── Floating Label wrapper ─────────────────────────────────── */
 function FloatLabel({ label, required, value, children }) {
   const [focused, setFocused] = useState(false)
+  const id = useId()
   const active = focused || (value !== '' && value !== undefined && value !== null)
+
+  // Inyecta id + aria-required al input/textarea hijo
+  const child = cloneElement(children, {
+    id,
+    'aria-required': required ? 'true' : undefined,
+    onFocus: (e) => { setFocused(true); children.props.onFocus?.(e) },
+    onBlur:  (e) => { setFocused(false); children.props.onBlur?.(e) },
+  })
 
   return (
     <div
       className={`relative border transition-colors duration-200
         ${focused ? 'border-gold-500' : 'border-navy-200'}`}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
     >
       <label
+        htmlFor={id}
         className={`absolute left-3 pointer-events-none bg-white transition-all duration-200 z-10
           ${active
             ? '-top-2.5 text-[11px] px-1 text-gold-600'
             : 'top-3.5 text-sm text-navy-400'
           }`}
       >
-        {label}{required && <span className="ml-0.5 text-gold-500">*</span>}
+        {label}{required && <span className="ml-0.5 text-gold-500" aria-hidden="true">*</span>}
       </label>
-      {children}
+      {child}
     </div>
   )
 }
@@ -36,10 +44,15 @@ function FloatLabel({ label, required, value, children }) {
 /* ─── Clases base para los campos ────────────────────────────── */
 const fieldCls = 'w-full px-3 pt-5 pb-2.5 bg-transparent text-navy-900 text-sm outline-none'
 
-/* ─── Custom Select ──────────────────────────────────────────── */
+/* ─── Custom Select (combobox accesible) ─────────────────────── */
 function CustomSelect({ label, required, name, value, onChange, options }) {
   const [open, setOpen] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(-1)
   const wrapRef = useRef(null)
+  const triggerRef = useRef(null)
+  const listRef = useRef(null)
+  const labelId = useId()
+  const listboxId = useId()
 
   useEffect(() => {
     const handler = e => {
@@ -49,54 +62,127 @@ function CustomSelect({ label, required, name, value, onChange, options }) {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
+  // Al abrir, posiciona el activeIndex en el valor actual (o el primero)
+  useEffect(() => {
+    if (open) {
+      const idx = options.indexOf(value)
+      setActiveIndex(idx >= 0 ? idx : 0)
+    }
+  }, [open, value, options])
+
+  // Cuando cambia activeIndex con el panel abierto, scroll a la opción
+  useEffect(() => {
+    if (open && activeIndex >= 0 && listRef.current) {
+      const opt = listRef.current.querySelector(`[data-index="${activeIndex}"]`)
+      if (opt) opt.scrollIntoView({ block: 'nearest' })
+    }
+  }, [open, activeIndex])
+
   const select = option => {
     onChange({ target: { name, value: option } })
     setOpen(false)
+    triggerRef.current?.focus()
+  }
+
+  const onKeyDown = (e) => {
+    const key = e.key
+    if (!open) {
+      if (key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ') {
+        e.preventDefault()
+        setOpen(true)
+      }
+      return
+    }
+    if (key === 'Escape') { e.preventDefault(); setOpen(false); triggerRef.current?.focus(); return }
+    if (key === 'ArrowDown') { e.preventDefault(); setActiveIndex(i => Math.min(options.length - 1, i + 1)); return }
+    if (key === 'ArrowUp')   { e.preventDefault(); setActiveIndex(i => Math.max(0, i - 1)); return }
+    if (key === 'Home')      { e.preventDefault(); setActiveIndex(0); return }
+    if (key === 'End')       { e.preventDefault(); setActiveIndex(options.length - 1); return }
+    if (key === 'Enter' || key === ' ') {
+      e.preventDefault()
+      if (activeIndex >= 0) select(options[activeIndex])
+      return
+    }
+    if (key === 'Tab') { setOpen(false) }
   }
 
   const active = open || value !== ''
+  const activeId = activeIndex >= 0 ? `${listboxId}-opt-${activeIndex}` : undefined
 
   return (
     <div ref={wrapRef} className="relative">
-      {/* Trigger */}
+      {/* Trigger (combobox) */}
       <div
-        onClick={() => setOpen(o => !o)}
-        className={`relative border cursor-pointer transition-colors duration-200 select-none
+        className={`relative border transition-colors duration-200 select-none
           ${open ? 'border-gold-500' : 'border-navy-200'}`}
       >
-        <label className={`absolute left-3 pointer-events-none bg-white transition-all duration-200 z-10
-          ${active ? '-top-2.5 text-[11px] px-1 text-gold-600' : 'top-3.5 text-sm text-navy-400'}`}>
-          {label}{required && <span className="ml-0.5 text-gold-500">*</span>}
-        </label>
-        <div className="flex items-center justify-between px-3 pt-5 pb-2.5 min-h-[52px]">
+        <span
+          id={labelId}
+          className={`absolute left-3 pointer-events-none bg-white transition-all duration-200 z-10
+            ${active ? '-top-2.5 text-[11px] px-1 text-gold-600' : 'top-3.5 text-sm text-navy-400'}`}
+        >
+          {label}{required && <span className="ml-0.5 text-gold-500" aria-hidden="true">*</span>}
+        </span>
+        <button
+          ref={triggerRef}
+          type="button"
+          role="combobox"
+          aria-haspopup="listbox"
+          aria-expanded={open}
+          aria-controls={listboxId}
+          aria-labelledby={labelId}
+          aria-required={required ? 'true' : undefined}
+          aria-activedescendant={open ? activeId : undefined}
+          onClick={() => setOpen(o => !o)}
+          onKeyDown={onKeyDown}
+          className="w-full flex items-center justify-between px-3 pt-5 pb-2.5 min-h-[52px] text-left bg-transparent cursor-pointer outline-none"
+        >
           <span className={`text-sm ${value ? 'text-navy-900' : 'text-navy-400'}`}>
             {value || ''}
           </span>
           <svg
             className={`w-4 h-4 text-navy-400 flex-shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
-            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
           </svg>
-        </div>
+        </button>
       </div>
 
-      {/* Panel */}
+      {/* Panel (listbox) */}
       {open && (
-        <ul className="absolute top-full left-0 right-0 z-50 bg-white border border-navy-100 border-t-0 shadow-lg overflow-hidden">
-          {options.map(opt => (
-            <li
-              key={opt}
-              onClick={() => select(opt)}
-              className={`px-4 py-3 text-sm cursor-pointer transition-colors duration-150
-                ${value === opt
-                  ? 'bg-navy-50 text-navy-900 font-medium border-l-2 border-gold-500'
-                  : 'text-navy-600 hover:bg-cream hover:text-navy-900'
-                }`}
-            >
-              {opt}
-            </li>
-          ))}
+        <ul
+          ref={listRef}
+          id={listboxId}
+          role="listbox"
+          aria-labelledby={labelId}
+          tabIndex={-1}
+          className="absolute top-full left-0 right-0 z-50 bg-white border border-navy-100 border-t-0 shadow-lg overflow-hidden"
+        >
+          {options.map((opt, i) => {
+            const isSelected = value === opt
+            const isActive   = activeIndex === i
+            return (
+              <li
+                key={opt}
+                id={`${listboxId}-opt-${i}`}
+                data-index={i}
+                role="option"
+                aria-selected={isSelected}
+                onMouseEnter={() => setActiveIndex(i)}
+                onClick={() => select(opt)}
+                className={`px-4 py-3 text-sm cursor-pointer transition-colors duration-150
+                  ${isSelected
+                    ? 'bg-navy-50 text-navy-900 font-medium border-l-2 border-gold-500'
+                    : isActive
+                      ? 'bg-cream text-navy-900'
+                      : 'text-navy-600 hover:bg-cream hover:text-navy-900'
+                  }`}
+              >
+                {opt}
+              </li>
+            )
+          })}
         </ul>
       )}
     </div>
@@ -213,7 +299,11 @@ export default function Contact() {
           {/* Columna derecha: formulario */}
           <div className="animate-on-scroll">
             {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-20 border border-navy-100 bg-cream">
+              <div
+                role="status"
+                aria-live="polite"
+                className="h-full flex flex-col items-center justify-center text-center py-20 border border-navy-100 bg-cream"
+              >
                 <div className="w-14 h-14 bg-navy-700 flex items-center justify-center mb-6">
                   <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -323,6 +413,7 @@ export default function Contact() {
             href="https://www.google.com/maps?cid=1508750377694368175&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=es&gl=LT&source=embed"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Abrir ubicación en Google Maps (se abre en una pestaña nueva)"
             className="block group relative"
           >
             <iframe
@@ -336,7 +427,10 @@ export default function Contact() {
               title="Ubicación Amprimo Abogados"
             />
             <div className="absolute inset-0 bg-transparent group-hover:bg-navy-950/10 transition-colors duration-300 flex items-end justify-end p-4">
-              <span className="bg-navy-950 text-white text-xs uppercase tracking-widest px-4 py-2 font-semibold flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span
+                aria-hidden="true"
+                className="bg-navy-950 text-white text-xs uppercase tracking-widest px-4 py-2 font-semibold flex items-center gap-2 shadow-lg shadow-black/30"
+              >
                 Ver en Google Maps
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

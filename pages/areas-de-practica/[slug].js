@@ -19,7 +19,7 @@ export default function AreaPage({ area, prev, next }) {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         <PageHeader label="Práctica Legal" title={area.title} />
 
         <section className="bg-white py-20 lg:py-28">

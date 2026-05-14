@@ -17,6 +17,16 @@
     @apply bg-navy-500 text-white;
   }
 
+  /* Foco visible global accesible (WCAG 2.4.7) */
+  *:focus {
+    outline: none;
+  }
+  *:focus-visible {
+    outline: 2px solid #C9A84C; /* gold-500 aprox */
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   /* Scrollbar elegante */
   ::-webkit-scrollbar {
     width: 6px;
@@ -26,6 +36,21 @@
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-navy-500 rounded-full;
+  }
+}
+
+/* Respeto a prefers-reduced-motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -119,6 +144,27 @@
   background-image:
     radial-gradient(circle at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 40%);
+}
+
+/* Skip link (saltar al contenido) — WCAG 2.4.1 */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  background: #0a1628;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 1rem;
+  outline: 2px solid #C9A84C;
+  outline-offset: 2px;
 }
 
 /* Overlay gradiente en fotos del equipo */

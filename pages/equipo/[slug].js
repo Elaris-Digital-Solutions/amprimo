@@ -48,7 +48,7 @@ export default function LawyerProfile({ lawyer, prevLawyer, nextLawyer }) {
 
       <Navbar />
 
-      <main>
+      <main id="main-content">
         {/* Hero del perfil */}
         <section className="relative bg-navy-950 pt-32 pb-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-[#0f2035]" />
