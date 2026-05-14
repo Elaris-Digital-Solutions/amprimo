@@ -232,7 +232,7 @@ export default function PracticeAreas({ preview = false }) {
             <Link
               key={area.id}
               href={`/areas-de-practica/${area.slug}`}
-              className={`animate-on-scroll relative bg-white p-8 group cursor-pointer transition-colors duration-300 practice-card overflow-hidden hover:bg-navy-950 border-r border-b border-navy-100 ${colStart}`}
+              className={`animate-on-scroll relative bg-white p-8 group cursor-pointer transition-all duration-300 practice-card overflow-hidden hover:bg-navy-950 active:bg-navy-900 active:scale-[0.99] border-r border-b border-navy-100 ${colStart}`}
             >
               {/* Ícono */}
               <div className="mb-5 text-navy-700 transition-colors duration-300 group-hover:text-gold-400">
@@ -244,23 +244,22 @@ export default function PracticeAreas({ preview = false }) {
                 {area.title}
               </h3>
 
-              <div className="w-8 h-px mb-4 bg-navy-200 transition-colors duration-300 group-hover:bg-gold-500" />
+              <div className="w-8 h-px mb-4 bg-gold-500/60 transition-colors duration-300 group-hover:bg-gold-500" />
 
               {/* Descripción */}
               <p className="text-xs leading-relaxed text-navy-500 transition-colors duration-300 group-hover:text-white/65">
                 {area.description}
               </p>
 
-              {/* Ver más */}
-              <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-navy-300 transition-colors duration-300 group-hover:text-gold-400">
-                <span>Ver más</span>
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {/* Flecha — afford permanente de interactividad */}
+              <div className="mt-5 text-gold-600 transition-all duration-300 group-hover:text-gold-400 group-hover:translate-x-1" aria-hidden="true">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </div>
 
-              {/* Línea bottom al hover */}
-              <div className="absolute bottom-0 left-0 h-0.5 bg-gold-500 w-0 transition-all duration-500 group-hover:w-full" />
+              {/* Línea bottom — visible siempre, full al hover */}
+              <div className="absolute bottom-0 left-0 h-0.5 bg-gold-500 w-10 transition-all duration-500 group-hover:w-full" />
             </Link>
             )
             // Rellenos invisibles para evitar borde suelto cuando hay un ítem solo

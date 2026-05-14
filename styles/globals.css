@@ -123,22 +123,6 @@
   margin-bottom: 1rem;
 }
 
-/* Hover en cards de práctica */
-.practice-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #2b7bb5;
-  transition: width 0.4s ease;
-}
-
-.practice-card:hover::after {
-  width: 100%;
-}
-
 /* Pattern geométrico sutil para hero */
 .hero-pattern {
   background-image:
