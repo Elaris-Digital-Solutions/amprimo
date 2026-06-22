@@ -161,11 +161,11 @@ export default function NewsDetail({ post, related }) {
 
       <main id="main-content">
         {/* Hero */}
-        <section className="relative mt-20 bg-navy-950 overflow-hidden">
+        <section className="relative bg-navy-950 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(43,123,181,0.08),transparent_60%)]" />
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
 
-          <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-16 lg:pb-20">
+          <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 pt-28 lg:pt-36 pb-16 lg:pb-20">
             <Link
               href="/noticias"
               {...hoverPrefetch('/noticias')}

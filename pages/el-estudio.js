@@ -5,64 +5,31 @@ import Footer from '../components/Footer'
 
 const diferenciales = [
   {
-    title: 'Compromiso con la Gestión Eficiente de Conflictos',
-    body: 'Nos comprometemos a gestionar los conflictos legales de manera eficiente y exitosa, ofreciendo soluciones efectivas y satisfactorias para nuestros clientes.',
+    title: 'Litigio constitucional de primer nivel',
+    body: 'El litigio constitucional es nuestro terreno natural. Hemos conducido procesos emblemáticos ante el Tribunal Constitucional y el Poder Judicial, con un historial de éxito que pocos estudios en el país pueden mostrar.',
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Trayectoria en la función pública',
+    body: 'Varios de nuestros abogados han ocupado cargos de alta responsabilidad en el sector público — el Congreso de la República, carteras ministeriales y organismos reguladores. Esa experiencia nos da una comprensión profunda del funcionamiento del Estado que se traduce en una ventaja estratégica frente a cada controversia.',
+    icon: (
+      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'La controversia como especialidad',
+    body: 'No esquivamos los casos difíciles: los buscamos. Empresas e instituciones nos confían sus asuntos más complejos y de mayor exposición, donde la estrategia legal se cruza con la reputación y la continuidad del negocio.',
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
       </svg>
     ),
-  },
-  {
-    title: 'Comprensión Integral de los Litigios',
-    body: 'El profundo conocimiento de nuestro equipo abarca no solo los aspectos técnicos y legales de los procesos arbitrales, sino también una comprensión integral de los litigios constitucionales, civiles y regulatorios.',
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Experiencia en Resolución de Disputas y Arbitraje',
-    body: 'Nuestra firma se distingue por su amplia experiencia en la resolución de disputas y arbitrajes, respaldada por un historial exitoso en casos de gran escala. Ofrecemos soluciones efectivas y estrategias probadas para abordar una amplia gama de conflictos legales.',
-    icon: (
-      <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-      </svg>
-    ),
-  },
-]
-
-const logos = [
-  {
-    src: '/images/chambers.webp',
-    alt: 'Chambers & Partners',
-    style: { filter: 'brightness(0) invert(1)', mixBlendMode: 'screen' },
-  },
-  {
-    src: '/images/legal-500.webp',
-    alt: 'Legal 500',
-    style: { mixBlendMode: 'screen' },
-  },
-  {
-    src: '/images/ranked-firm2024.webp',
-    alt: 'Ranked Firm 2024',
-    style: { mixBlendMode: 'multiply' },
-  },
-  {
-    src: '/images/latin-lawyer.png',
-    alt: 'Latin Lawyer 250',
-    style: { mixBlendMode: 'screen' },
-  },
-  {
-    src: '/images/world-tax.png',
-    alt: 'World Tax',
-    style: { mixBlendMode: 'screen' },
-  },
-  {
-    src: '/images/best-lawyers.png',
-    alt: 'Best Lawyers',
-    style: { mixBlendMode: 'screen', maxWidth: '160px' },
   },
 ]
 
@@ -88,12 +55,12 @@ export default function ElEstudio() {
     <>
       <Head>
         <title>El Estudio | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Más de 19 años de trayectoria en Lima, Perú." />
+        <meta name="description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Veinte años de trayectoria en Lima, Perú." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://amprimo.netlify.app/el-estudio" />
         <meta property="og:title" content="El Estudio | Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Más de 19 años de trayectoria en Lima, Perú." />
+        <meta property="og:description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Veinte años de trayectoria en Lima, Perú." />
         <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -113,7 +80,9 @@ export default function ElEstudio() {
       <main id="main-content">
 
         {/* ── 1. Hero ─────────────────────────────────────────── */}
-        <section className="relative mt-20 min-h-[65vh] flex items-end overflow-hidden bg-navy-950">
+        <section className="relative min-h-[70vh] flex items-end overflow-hidden bg-navy-950">
+          {/* TODO (obs. 24): reemplazar por la nueva foto (la mejor de las adjuntas),
+              editada/limpia de "ruido" y de forma que el texto no se pierda sobre ella. */}
           <img
             src="/images/hero-el-estudio.webp"
             alt=""
@@ -121,20 +90,20 @@ export default function ElEstudio() {
             fetchpriority="high"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/65 to-navy-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/75 to-navy-950/50" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28 w-full">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-8 h-px bg-white/60" />
-              <span className="text-white/80 text-xs uppercase tracking-widest2 font-semibold font-sans">El Estudio</span>
+              <span className="text-white/80 text-xs uppercase tracking-widest2 font-semibold font-sans">Quiénes Somos</span>
             </div>
             <h1 className="font-serif text-white text-3xl sm:text-4xl lg:text-[3.25rem] font-medium max-w-3xl leading-tight">
               El Estudio
             </h1>
             <p className="mt-6 text-white/65 text-base lg:text-lg max-w-3xl leading-relaxed font-light">
-              Especialistas en asesoría legal para empresas privadas y entidades públicas.
-              Con más de 17 años de trayectoria, combinamos experiencia técnica y un profundo
-              conocimiento del sistema legal peruano para ofrecer soluciones efectivas y personalizadas.
+              Desde 2006 acompañamos a empresas, instituciones y personas en los asuntos legales más
+              exigentes del país, combinando profundidad técnica, experiencia en el sector público y una
+              vocación litigante que nos define.
             </p>
           </div>
         </section>
@@ -184,19 +153,25 @@ export default function ElEstudio() {
                 </div>
                 <h2 className="animate-on-scroll font-serif text-navy-900 text-3xl lg:text-4xl font-medium leading-tight mb-6">
                   Comprometidos con la{' '}
-                  <em className="not-italic text-gold-500">excelencia legal</em>
+                  <em className="not-italic text-gold-500">excelencia</em>
                 </h2>
                 <p className="animate-on-scroll text-navy-600 text-base leading-relaxed mb-5">
-                  Nos dedicamos a ofrecer soluciones legales efectivas y sostenemos un compromiso
-                  inquebrantable con la calidad y la experiencia en cada faceta de nuestra labor legal.
-                  Nuestra prioridad es asegurar que nuestros clientes reciban asesoramiento de la más
-                  alta calidad y confianza en todas las áreas de práctica que abordamos.
+                  Nacimos en 2006 de la mano de litigantes con una convicción clara: defender cada caso
+                  con rigor, profundidad y compromiso total. Con los años crecimos hasta convertirnos en
+                  un estudio que cubre todas las áreas del derecho, sin perder nunca ese enfoque que nos
+                  define.
+                </p>
+                <p className="animate-on-scroll text-navy-600 text-base leading-relaxed mb-5">
+                  Nuestra fortaleza nace de un equipo que conoce el derecho desde dentro y desde fuera del
+                  Estado. Entre nuestros socios contamos con trayectoria en el Congreso, en ministerios y
+                  en los más altos tribunales del país — una perspectiva que nos permite anticipar
+                  escenarios y asesorar con criterio en las decisiones más críticas.
                 </p>
                 <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                  Cabe señalar que en el campo arbitral, nuestros principales socios han sido reconocidos
-                  como líderes en la industria y son ampliamente solicitados en condición de litigantes
-                  y árbitros, siendo partícipes en numerosos arbitrajes a gran escala y representando a
-                  algunas de las empresas más importantes del país.
+                  Nuestra mayor fortaleza está en el litigio constitucional. Hemos conducido procesos
+                  emblemáticos ante el Tribunal Constitucional y el Poder Judicial, defendiendo derechos
+                  fundamentales y el orden constitucional en casos de alcance nacional — un terreno en el
+                  que pocos estudios del país pueden mostrar nuestra trayectoria y nuestros resultados.
                 </p>
               </div>
             </div>
@@ -253,21 +228,37 @@ export default function ElEstudio() {
                   <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
                     Amprimo, Flury, Barboza &amp; Rodríguez Abogados mantiene firme su compromiso con la
                     responsabilidad social, contribuyendo activamente al cambio positivo en nuestra comunidad.
-                    A través de un enfoque estratégico y consciente de la Responsabilidad Social Empresarial
-                    (RSE), nuestra firma ha elegido causas alineadas con nuestros valores y los de nuestros
-                    empleados y clientes.
+                    Para nosotros, ese compromiso se expresa, ante todo, en la defensa del orden constitucional
+                    y el fortalecimiento de la institucionalidad democrática del país.
                   </p>
                   <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    Nuestra participación va más allá de las contribuciones financieras; aprovechamos nuestra
-                    experiencia legal para impactar directamente en las causas que respaldamos, desde
-                    controversias entre privados, buscando siempre que prime la justicia, hasta litigios
-                    constitucionales complejos, en cautela del Estado de Derecho y la Democracia.
+                    A lo largo de los años, el estudio ha participado de forma recurrente y ad honorem como
+                    <em> amicus curiae</em> en procesos de inconstitucionalidad de relevancia nacional. Esta
+                    vocación nace de la trayectoria de nuestros socios como reconocidos constitucionalistas,
+                    cuya voz independiente ha sido convocada en debates jurídicos de alcance público — desde
+                    controversias en materia de infraestructura y servicios públicos hasta causas vinculadas a
+                    la preservación de manifestaciones de la cultura y las tradiciones populares.
                   </p>
                   <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    Al alentar a nuestro equipo a participar activamente en causas pro bono, no solo
-                    mejoramos nuestras iniciativas de RSE, sino que también humanizamos nuestra firma.
-                    Nuestra dedicación con la responsabilidad social es una parte integral de nuestra
-                    identidad como firma legal.
+                    Ese reconocimiento se refleja en las instituciones privadas que recurren a nuestra firma
+                    para evaluar la constitucionalidad de proyectos de ley en materia minera, ambiental y
+                    económica. Gremios como la Sociedad Nacional de Industrias, la Cámara de Comercio y la
+                    Sociedad Nacional de Minería, Petróleo y Energía — e incluso el propio Congreso de la
+                    República — han confiado en nuestro análisis frente a iniciativas que impactan no solo a
+                    los grandes sectores productivos, sino también a las economías emergentes que sostienen el
+                    desarrollo del país.
+                  </p>
+                  <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
+                    Nuestro compromiso va más allá del análisis técnico. De forma recurrente impulsamos litigio
+                    estratégico — principalmente a través de acciones de amparo — en materias de relevancia
+                    nacional, buscando generar un impacto estructural: promover modificaciones normativas en
+                    ámbitos como la salud, sentar precedentes judiciales, visibilizar problemáticas sociales y
+                    transformar políticas públicas.
+                  </p>
+                  <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
+                    Para nosotros, contribuir al debate público con rigor técnico e independencia no es una
+                    actividad accesoria: es parte de nuestra identidad como firma y de nuestro compromiso con
+                    la cautela del Estado de Derecho y la Democracia.
                   </p>
                 </div>
               </div>
@@ -286,38 +277,6 @@ export default function ElEstudio() {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 5. Logros y reconocimientos ─────────────────────── */}
-        <section id="logros-y-reconocimientos" className="bg-navy-950 py-20 lg:py-24 relative overflow-hidden" data-observe>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(43,123,181,0.08),transparent_60%)]" />
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
-
-          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="text-center mb-14">
-              <span className="animate-on-scroll section-label block mb-4">Distinción Internacional</span>
-              <h2 className="animate-on-scroll font-serif text-white text-3xl lg:text-4xl font-medium mb-4">
-                Nuestros Logros y Reconocimientos
-              </h2>
-              <p className="animate-on-scroll text-white/45 text-sm leading-relaxed max-w-2xl mx-auto">
-                Hemos obtenido notables reconocimientos en los más prestigiosos rankings de prestigio mundial
-                que evalúan y categorizan a los principales bufetes de abogados y distinguidos profesionales
-                del derecho, consolidando nuestra posición como destacados referentes a nivel internacional.
-              </p>
-            </div>
-
-            <div className="animate-on-scroll grid grid-cols-2 md:grid-cols-3 place-items-center gap-10 md:gap-14 lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:gap-16">
-              {logos.map(logo => (
-                <img
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  style={logo.style}
-                  className="h-24 md:h-28 lg:h-36 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-                />
-              ))}
             </div>
           </div>
         </section>

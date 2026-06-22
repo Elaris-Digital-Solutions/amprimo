@@ -11,13 +11,13 @@ export default function Home() {
     <>
       <Head>
         <title>Amprimo, Flury, Barboza &amp; Rodríguez Abogados | Lima, Perú</title>
-        <meta name="description" content="Firma boutique de alto perfil especializada en derecho constitucional, litigios y asesoría corporativa. Reconocida por Chambers & Partners, Legal 500, Best Lawyers y Leaders League." />
+        <meta name="description" content="Firma de alto perfil especializada en derecho constitucional, litigios y asesoría corporativa. Reconocida por Chambers & Partners, Legal 500, Best Lawyers y Leaders League." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Open Graph / WhatsApp / Social sharing */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://amprimo.netlify.app/" />
         <meta property="og:title" content="Amprimo, Flury, Barboza & Rodríguez Abogados | Lima, Perú" />
-        <meta property="og:description" content="Firma boutique de alto perfil especializada en derecho constitucional, litigios y asesoría corporativa. Reconocida por Chambers & Partners, Legal 500, Best Lawyers y Leaders League." />
+        <meta property="og:description" content="Firma de alto perfil especializada en derecho constitucional, litigios y asesoría corporativa. Reconocida por Chambers & Partners, Legal 500, Best Lawyers y Leaders League." />
         <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />

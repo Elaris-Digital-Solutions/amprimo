@@ -11,15 +11,15 @@ const navLinks = [
 
 const practiceLinks = [
   { label: 'Derecho Constitucional',                    href: '/areas-de-practica/derecho-constitucional' },
-  { label: 'Procesal, Controversias y Arbitraje',       href: '/areas-de-practica/procesal-solucion-de-controversias-y-arbitraje' },
-  { label: 'Derecho Corporativo y Patrimonial',         href: '/areas-de-practica/derecho-corporativo-y-patrimonial' },
-  { label: 'Inversiones y Recursos Naturales',          href: '/areas-de-practica/inversiones-regulaciones-y-recursos-naturales' },
-  { label: 'Derecho Administrativo',                    href: '/areas-de-practica/derecho-administrativo-y-contratacion-publica' },
-  { label: 'Derecho Tributario y Financiero',           href: '/areas-de-practica/derecho-tributario-y-financiero' },
-  { label: 'Derecho Laboral',                           href: '/areas-de-practica/derecho-laboral' },
+  { label: 'Solución de Controversias',                 href: '/areas-de-practica/solucion-de-controversias' },
+  { label: 'Arbitraje',                                 href: '/areas-de-practica/arbitraje' },
+  { label: 'Derecho Administrativo y Regulatorio',      href: '/areas-de-practica/derecho-administrativo-y-regulatorio' },
+  { label: 'Derecho Inmobiliario y Construcción',       href: '/areas-de-practica/derecho-inmobiliario-y-construccion' },
+  { label: 'Derecho Civil Contractual',                 href: '/areas-de-practica/derecho-civil-contractual' },
+  { label: 'Derecho Corporativo y Societario',          href: '/areas-de-practica/derecho-corporativo-y-societario' },
   { label: 'Competencia y Propiedad Intelectual',       href: '/areas-de-practica/derecho-de-la-competencia-y-propiedad-intelectual' },
-  { label: 'Derecho de Familia',                        href: '/areas-de-practica/derecho-de-familia' },
-  { label: 'Derecho Inmobiliario',                      href: '/areas-de-practica/derecho-inmobiliario' },
+  { label: 'Derecho Tributario',                        href: '/areas-de-practica/derecho-tributario' },
+  { label: 'Derecho Laboral',                           href: '/areas-de-practica/derecho-laboral-individual-y-colectivo' },
 ]
 
 export default function Footer() {
@@ -36,6 +36,8 @@ export default function Footer() {
 
           {/* Marca */}
           <div className="lg:col-span-1">
+            {/* TODO (obs. 21): reemplazar por la versión del logo "con el celeste",
+                la misma que debe usarse arriba en el navbar. Sin texto añadido. */}
             <div className="mb-6">
               <img
                 src="/images/amprimo-logo.webp"
@@ -44,8 +46,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-white/65 text-xs leading-relaxed">
-              Firma boutique de alto perfil especializada en derecho constitucional, litigios
-              y asesoría corporativa desde 2007.
+              Firma de alto perfil especializada en derecho constitucional, litigios
+              y asesoría corporativa desde 2006.
             </p>
             <div className="flex gap-4 mt-6">
               <a href="https://www.linkedin.com/company/amprimo-&-flury-abogados/" target="_blank" rel="noopener noreferrer"

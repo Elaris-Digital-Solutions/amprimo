@@ -8,7 +8,7 @@ export default function AreasDePracticaPage() {
     <>
       <Head>
         <title>Áreas de Práctica | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="A través de nuestras diez áreas de práctica, brindamos una asesoría legal completa y especializada en todos los aspectos legales esenciales para el éxito de negocios en el Perú." />
+        <meta name="description" content="A través de nuestras dieciséis áreas de práctica, brindamos una asesoría legal completa y especializada en todos los aspectos legales esenciales para el éxito de negocios en el Perú." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://amprimo.netlify.app/areas-de-practica" />
@@ -31,7 +31,7 @@ export default function AreasDePracticaPage() {
       <Navbar />
 
       <main id="main-content">
-        <section className="relative mt-20 min-h-[65vh] flex items-end overflow-hidden bg-navy-950">
+        <section className="relative min-h-[70vh] flex items-end overflow-hidden bg-navy-950">
           <img
             src="/images/hero-areas-especializacion.webp"
             alt=""
@@ -49,7 +49,7 @@ export default function AreasDePracticaPage() {
               Áreas de Práctica
             </h1>
             <p className="text-white/55 text-base lg:text-lg leading-relaxed mt-4 max-w-3xl">
-              A través de nuestras diez áreas de práctica, brindamos una asesoría legal completa
+              A través de nuestras dieciséis áreas de práctica, brindamos una asesoría legal completa
               y especializada que cubre todos los aspectos legales esenciales para el éxito y
               desarrollo de negocios en el Perú.
             </p>

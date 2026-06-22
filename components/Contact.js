@@ -196,6 +196,8 @@ export default function Contact() {
     nombre: '', email: '', telefono: '', motivo: '', consulta: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -218,9 +220,25 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  // Envío a Netlify Forms (obs. 7). Los destinatarios (administración, Joo y
+  // Emilio) se configuran como notificaciones del formulario "contacto" en el
+  // panel de Netlify → Forms → Notifications.
   const handleSubmit = e => {
     e.preventDefault()
-    setSubmitted(true)
+    setSending(true)
+    setError(false)
+    const body = new URLSearchParams({ 'form-name': 'contacto', ...formData }).toString()
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Network response was not ok')
+        setSubmitted(true)
+      })
+      .catch(() => setError(true))
+      .finally(() => setSending(false))
   }
 
   return (
@@ -318,7 +336,22 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                name="contacto"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                {/* Campos requeridos por Netlify Forms */}
+                <input type="hidden" name="form-name" value="contacto" />
+                <p className="hidden">
+                  <label>No llenar si eres humano: <input name="bot-field" onChange={handleChange} /></label>
+                </p>
+                {/* Espejo del select custom para que Netlify registre el campo */}
+                <input type="hidden" name="motivo" value={formData.motivo} />
+
                 <div className="mb-8">
                   <h3 className="font-serif text-navy-900 text-2xl font-medium mb-2">Escríbanos</h3>
                   <p className="text-navy-500 text-sm">
@@ -391,12 +424,21 @@ export default function Contact() {
                   </p>
                 )}
 
-                <button type="submit" className="btn-primary w-full justify-center mt-2">
-                  Enviar Consulta
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
+                <button type="submit" disabled={sending} className="btn-primary w-full justify-center mt-2 disabled:opacity-60 disabled:cursor-not-allowed">
+                  {sending ? 'Enviando…' : 'Enviar Consulta'}
+                  {!sending && (
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                    </svg>
+                  )}
                 </button>
+
+                {error && (
+                  <p role="alert" className="text-red-600 text-sm text-center">
+                    Ocurrió un error al enviar. Por favor, inténtelo nuevamente o escríbanos a
+                    <a href="mailto:administracion@amprimoabogados.com" className="text-gold-600 hover:underline ml-1">administracion@amprimoabogados.com</a>.
+                  </p>
+                )}
 
                 <p className="text-navy-400 text-xs text-center leading-relaxed">
                   Sus datos serán tratados de forma confidencial conforme a nuestra
@@ -407,14 +449,14 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Mapa ancho completo */}
+        {/* Mapa ancho completo — enmarcado para que cuadre con el resto del sitio (obs. 22) */}
         <div className="animate-on-scroll mt-16">
           <a
             href="https://www.google.com/maps?cid=1508750377694368175&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=es&gl=LT&source=embed"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Abrir ubicación en Google Maps (se abre en una pestaña nueva)"
-            className="block group relative"
+            className="block group relative border border-navy-100 overflow-hidden"
           >
             <iframe
               src="https://maps.google.com/maps?cid=1508750377694368175&output=embed"
