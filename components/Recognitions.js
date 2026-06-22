@@ -49,24 +49,31 @@ export default function Recognitions() {
           </p>
         </div>
 
-        {/* En desktop: una sola fila (flex-nowrap) con Best Lawyers al centro.
-            En móvil/tablet: grid de 2/3 columnas. */}
-        <div className="animate-on-scroll grid grid-cols-2 md:grid-cols-3 place-items-center gap-10 md:gap-12 lg:flex lg:flex-nowrap lg:justify-center lg:items-center lg:gap-6 xl:gap-10">
-          {orderedSeals.map(seal => (
-            <Link
-              key={seal.slug}
-              href={`/reconocimientos/${seal.slug}`}
-              aria-label={`Ver reconocimiento de ${seal.name}`}
-              className="block flex-shrink-0 transition-transform duration-300 hover:scale-105 focus-visible:scale-105"
-            >
-              <img
-                src={seal.logo}
-                alt={seal.name}
-                style={seal.logoStyle}
-                className="h-24 md:h-28 lg:h-24 xl:h-32 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
-              />
-            </Link>
-          ))}
+        {/* Desktop: 7 columnas iguales → espaciado uniforme y Best Lawyers
+            exactamente al centro (columna 4, vía order).
+            Móvil/tablet: grid de 2/3 columnas con Best Lawyers centrado abajo
+            (ocupa el ancho completo en la última fila). */}
+        <div className="animate-on-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 place-items-center gap-8 md:gap-10 lg:gap-4 xl:gap-6">
+          {recognitions.map((seal, idx) => {
+            const isBest = seal.slug === 'best-lawyers'
+            const orderCls = isBest ? 'lg:order-2' : idx <= 2 ? 'lg:order-1' : 'lg:order-3'
+            const spanCls = isBest ? 'col-span-2 md:col-span-3 lg:col-span-1' : ''
+            return (
+              <Link
+                key={seal.slug}
+                href={`/reconocimientos/${seal.slug}`}
+                aria-label={`Ver reconocimiento de ${seal.name}`}
+                className={`flex items-center justify-center w-full transition-transform duration-300 hover:scale-105 focus-visible:scale-105 ${orderCls} ${spanCls}`}
+              >
+                <img
+                  src={seal.logo}
+                  alt={seal.name}
+                  style={seal.logoStyle}
+                  className="h-24 md:h-28 lg:h-auto lg:max-h-24 xl:max-h-28 w-auto max-w-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+                />
+              </Link>
+            )
+          })}
         </div>
       </div>
     </section>
