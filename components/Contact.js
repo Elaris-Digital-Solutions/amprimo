@@ -228,7 +228,8 @@ export default function Contact() {
     setSending(true)
     setError(false)
     const body = new URLSearchParams({ 'form-name': 'contacto', ...formData }).toString()
-    fetch('/', {
+    // POST al form estático (público) — patrón requerido por el runtime Next.js v5.
+    fetch('/__forms.html', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body,
@@ -339,8 +340,6 @@ export default function Contact() {
               <form
                 name="contacto"
                 method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 className="space-y-6"
               >

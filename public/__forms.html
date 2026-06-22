@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify Forms</title>
+  </head>
+  <body>
+    <!--
+      Formulario "fantasma" para que Netlify detecte el form en tiempo de build.
+      Requerido por @netlify/plugin-nextjs v5 (la detección ya no parsea las
+      páginas de Next.js). El formulario real vive en components/Contact.js y
+      envía un POST a /__forms.html con estos mismos campos.
+      Ref: https://ntl.fyi/next-runtime-forms-migration
+    -->
+    <form name="contacto" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contacto" />
+      <input type="text" name="nombre" />
+      <input type="email" name="email" />
+      <input type="tel" name="telefono" />
+      <input type="text" name="motivo" />
+      <textarea name="consulta"></textarea>
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>
