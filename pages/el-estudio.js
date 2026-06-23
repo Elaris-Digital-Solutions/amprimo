@@ -15,7 +15,7 @@ const diferenciales = [
   },
   {
     title: 'Trayectoria en la función pública',
-    body: 'Varios de nuestros abogados han ocupado cargos de alta responsabilidad en el sector público — el Congreso de la República, carteras ministeriales y organismos reguladores. Esa experiencia nos da una comprensión profunda del funcionamiento del Estado que se traduce en una ventaja estratégica frente a cada controversia.',
+    body: 'Varios de nuestros abogados han ocupado cargos de alta responsabilidad en el sector público — Congreso, carteras ministeriales y organismos reguladores —, lo cual nos da una comprensión profunda del Estado que se traduce en ventaja estratégica frente a cada controversia.',
     icon: (
       <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
@@ -213,7 +213,7 @@ export default function ElEstudio() {
         {/* ── 4. Responsabilidad Social ───────────────────────── */}
         <section className="py-20 lg:py-28 bg-white" data-observe>
           <div className="max-w-7xl mx-auto px-6 lg:px-12">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid lg:grid-cols-[1.35fr_1fr] gap-12 lg:gap-16 items-center lg:items-stretch">
 
               {/* Texto */}
               <div>
@@ -229,48 +229,37 @@ export default function ElEstudio() {
                     Amprimo, Flury, Barboza &amp; Rodríguez Abogados mantiene firme su compromiso con la
                     responsabilidad social, contribuyendo activamente al cambio positivo en nuestra comunidad.
                     Para nosotros, ese compromiso se expresa, ante todo, en la defensa del orden constitucional
-                    y el fortalecimiento de la institucionalidad democrática del país.
+                    y el fortalecimiento de la institucionalidad democrática del país. A lo largo de los años,
+                    el Estudio ha participado de forma recurrente y ad honorem como <em>amicus curiae</em> en
+                    procesos de inconstitucionalidad de relevancia nacional. Esta vocación nace de la trayectoria
+                    de nuestros socios como reconocidos constitucionalistas, cuya voz independiente ha sido
+                    convocada en debates de alcance público — desde infraestructura y servicios públicos hasta
+                    la preservación de tradiciones populares.
                   </p>
                   <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    A lo largo de los años, el estudio ha participado de forma recurrente y ad honorem como
-                    <em> amicus curiae</em> en procesos de inconstitucionalidad de relevancia nacional. Esta
-                    vocación nace de la trayectoria de nuestros socios como reconocidos constitucionalistas,
-                    cuya voz independiente ha sido convocada en debates jurídicos de alcance público — desde
-                    controversias en materia de infraestructura y servicios públicos hasta causas vinculadas a
-                    la preservación de manifestaciones de la cultura y las tradiciones populares.
+                    Ese reconocimiento explica que gremios como la Sociedad Nacional de Industrias, la Cámara de
+                    Comercio y la Sociedad Nacional de Minería, Petróleo y Energía — e incluso el propio Congreso —
+                    recurran a nuestra firma para evaluar la constitucionalidad de proyectos de ley en materia
+                    minera, ambiental y económica.
                   </p>
                   <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    Ese reconocimiento se refleja en las instituciones privadas que recurren a nuestra firma
-                    para evaluar la constitucionalidad de proyectos de ley en materia minera, ambiental y
-                    económica. Gremios como la Sociedad Nacional de Industrias, la Cámara de Comercio y la
-                    Sociedad Nacional de Minería, Petróleo y Energía — e incluso el propio Congreso de la
-                    República — han confiado en nuestro análisis frente a iniciativas que impactan no solo a
-                    los grandes sectores productivos, sino también a las economías emergentes que sostienen el
-                    desarrollo del país.
-                  </p>
-                  <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    Nuestro compromiso va más allá del análisis técnico. De forma recurrente impulsamos litigio
-                    estratégico — principalmente a través de acciones de amparo — en materias de relevancia
-                    nacional, buscando generar un impacto estructural: promover modificaciones normativas en
-                    ámbitos como la salud, sentar precedentes judiciales, visibilizar problemáticas sociales y
-                    transformar políticas públicas.
-                  </p>
-                  <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    Para nosotros, contribuir al debate público con rigor técnico e independencia no es una
-                    actividad accesoria: es parte de nuestra identidad como firma y de nuestro compromiso con
-                    la cautela del Estado de Derecho y la Democracia.
+                    Nuestro compromiso va más allá del análisis técnico. Impulsamos litigio estratégico —
+                    principalmente mediante acciones de amparo — para generar impacto estructural: cambios
+                    normativos en ámbitos como la salud, precedentes judiciales y transformación de políticas
+                    públicas. Contribuir al debate público con rigor técnico e independencia es parte de nuestra
+                    identidad y de nuestro compromiso con la cautela del Estado de Derecho y la Democracia.
                   </p>
                 </div>
               </div>
 
-              {/* Acento visual */}
-              <div className="animate-on-scroll flex items-center justify-center lg:justify-end">
-                <div className="relative bg-navy-950 px-12 py-16 lg:px-16 lg:py-20">
+              {/* Acento visual — en desktop se estira a la altura del texto */}
+              <div className="animate-on-scroll flex items-center justify-center lg:items-stretch lg:justify-end">
+                <div className="relative bg-navy-950 px-12 py-16 lg:px-16 lg:py-20 lg:w-full lg:flex lg:flex-col lg:justify-center">
                   <div className="absolute top-0 left-0 w-16 h-px bg-gold-500" />
                   <div className="absolute top-0 left-0 h-16 w-px bg-gold-500" />
                   <div className="absolute bottom-0 right-0 w-16 h-px bg-gold-500" />
                   <div className="absolute bottom-0 right-0 h-16 w-px bg-gold-500" />
-                  <p className="font-serif text-white text-4xl lg:text-5xl font-bold leading-[1.15] text-right">
+                  <p className="font-serif text-white text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.1] text-right">
                     RESPON-<br />
                     SABILIDAD<br />
                     <span className="text-gold-500">SOCIAL</span>
