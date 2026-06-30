@@ -32,7 +32,7 @@ export default function Footer() {
       <div className="h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] gap-10 lg:gap-12">
 
           {/* Marca */}
           <div className="lg:col-span-1">
@@ -123,7 +123,7 @@ export default function Footer() {
               <div>
                 <p className="text-white/65 text-xs uppercase tracking-wider mb-1">Correo</p>
                 <a href="mailto:administracion@amprimoabogados.com"
-                  className="text-white/55 text-sm hover:text-gold-400 transition-colors break-all">
+                  className="text-white/55 text-sm hover:text-gold-400 transition-colors whitespace-nowrap">
                   administracion@amprimoabogados.com
                 </a>
               </div>

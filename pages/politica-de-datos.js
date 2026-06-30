@@ -1,7 +1,8 @@
-import Head from 'next/head'
+import Seo from '../components/Seo'
 import Navbar     from '../components/Navbar'
 import PageHeader from '../components/PageHeader'
 import Footer     from '../components/Footer'
+import { breadcrumbSchema } from '../lib/schema'
 
 const paragraphs = [
   'En cumplimiento de lo dispuesto por la Ley N° 29733, Ley de Protección de Datos Personales y su Reglamento aprobado por Decreto Supremo N° 003-2013-JUS, AMPRIMO, FLURY, BARBOZA & RODRÍGUEZ ABOGADOS SOCIEDAD CIVIL DE R.L. ("Estudio Amprimo") identificada con RUC N° 20513696885, ubicada en Av. Circunvalación del Golf Los Incas 134, Centro Empresarial Panorama, Torre 1, Oficina 1405, distrito de Santiago de Surco, provincia y departamento de Lima, pone en conocimiento de sus clientes (los "Titulares") la política aplicable al tratamiento de sus datos personales.',
@@ -21,14 +22,17 @@ const paragraphs = [
 export default function PoliticaDeDatos() {
   return (
     <>
-      <Head>
-        <title>Política de Datos | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Política de Protección de Datos Personales de Amprimo, Flury, Barboza & Rodríguez Abogados, conforme a la Ley N° 29733." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title="Política de Datos | Amprimo, Flury, Barboza & Rodríguez Abogados"
+        description="Política de Protección de Datos Personales del Estudio Amprimo, conforme a la Ley N° 29733 y su Reglamento."
+        path="/politica-de-datos"
+        schema={[
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Política de Datos', path: '/politica-de-datos' },
+          ]),
+        ]}
+      />
 
       <Navbar />
 

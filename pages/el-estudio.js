@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
-import Head from 'next/head'
+import Seo from '../components/Seo'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { organizationSchema, breadcrumbSchema } from '../lib/schema'
 
 const diferenciales = [
   {
@@ -53,27 +54,19 @@ export default function ElEstudio() {
 
   return (
     <>
-      <Head>
-        <title>El Estudio | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Veinte años de trayectoria en Lima, Perú." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://amprimo.netlify.app/el-estudio" />
-        <meta property="og:title" content="El Estudio | Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:description" content="Especialistas en asesoría legal para empresas privadas y entidades públicas. Veinte años de trayectoria en Lima, Perú." />
-        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:site_name" content="Amprimo Abogados" />
-        <meta property="og:locale" content="es_PE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <link rel="preload" as="image" href="/images/hero-el-estudio.webp" type="image/webp" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title="El Estudio | Amprimo, Flury, Barboza & Rodríguez Abogados"
+        description="Conoce al Estudio Amprimo: firma fundada en 2006, especialista en litigio constitucional y asesoría a empresas privadas y entidades públicas, con trayectoria en el Congreso, ministerios y los más altos tribunales del Perú."
+        path="/el-estudio"
+        preloadImage="/images/hero-el-estudio.webp"
+        schema={[
+          organizationSchema(),
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'El Estudio', path: '/el-estudio' },
+          ]),
+        ]}
+      />
 
       <Navbar />
 
@@ -230,24 +223,22 @@ export default function ElEstudio() {
                     responsabilidad social, contribuyendo activamente al cambio positivo en nuestra comunidad.
                     Para nosotros, ese compromiso se expresa, ante todo, en la defensa del orden constitucional
                     y el fortalecimiento de la institucionalidad democrática del país. A lo largo de los años,
-                    el Estudio ha participado de forma recurrente y ad honorem como <em>amicus curiae</em> en
+                    el estudio ha participado de forma recurrente y ad honorem como <em>amicus curiae</em> en
                     procesos de inconstitucionalidad de relevancia nacional. Esta vocación nace de la trayectoria
                     de nuestros socios como reconocidos constitucionalistas, cuya voz independiente ha sido
-                    convocada en debates de alcance público — desde infraestructura y servicios públicos hasta
-                    la preservación de tradiciones populares.
+                    convocada en debates de alcance público — desde materia de infraestructura y servicios
+                    públicos hasta la preservación de tradiciones populares.
                   </p>
                   <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
                     Ese reconocimiento explica que gremios como la Sociedad Nacional de Industrias, la Cámara de
-                    Comercio y la Sociedad Nacional de Minería, Petróleo y Energía — e incluso el propio Congreso —
-                    recurran a nuestra firma para evaluar la constitucionalidad de proyectos de ley en materia
-                    minera, ambiental y económica.
-                  </p>
-                  <p className="animate-on-scroll text-navy-600 text-base leading-relaxed">
-                    Nuestro compromiso va más allá del análisis técnico. Impulsamos litigio estratégico —
-                    principalmente mediante acciones de amparo — para generar impacto estructural: cambios
-                    normativos en ámbitos como la salud, precedentes judiciales y transformación de políticas
-                    públicas. Contribuir al debate público con rigor técnico e independencia es parte de nuestra
-                    identidad y de nuestro compromiso con la cautela del Estado de Derecho y la Democracia.
+                    Comercio y la Sociedad Nacional de Minería, Petróleo y Energía — e incluso el propio Congreso
+                    de la República — recurran a nuestra firma para evaluar la constitucionalidad de proyectos de
+                    ley en materia minera, ambiental y económica. Nuestro compromiso va más allá del análisis
+                    técnico. Impulsamos de forma recurrente litigio estratégico — principalmente mediante acciones
+                    de amparo — para generar impacto estructural: modificaciones normativas en ámbitos como la
+                    salud, precedentes judiciales y transformación de políticas públicas. Para nosotros, contribuir
+                    al debate público con rigor técnico e independencia es parte de nuestra identidad como firma y
+                    de nuestro compromiso con la cautela del Estado de Derecho y la Democracia.
                   </p>
                 </div>
               </div>

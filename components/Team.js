@@ -95,15 +95,17 @@ export default function Team() {
         {/* Encabezado */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
           <div className="max-w-xl">
-            <p className="animate-on-scroll section-label mb-4">Directorio</p>
+            <p className="animate-on-scroll section-label mb-4">Talento y Experiencia</p>
             <div className="divider-gold mb-8 animate-on-scroll" />
             <h2 className="animate-on-scroll section-title text-3xl lg:text-4xl xl:text-5xl font-medium leading-[1.2]">
               Nuestro<span className="italic text-navy-700"> Equipo</span>
             </h2>
             <p className="animate-on-scroll text-navy-600 text-base leading-relaxed mt-5">
-              Nuestra excelencia se sustenta en la sólida formación y amplia experiencia de nuestros
-              abogados, quienes han ocupado cargos de alta responsabilidad en la administración
-              pública y el sector privado.
+              Varios de nuestros abogados han ocupado cargos de alta responsabilidad en el sector
+              público y privado, una trayectoria que aporta a cada caso una mirada estratégica del
+              funcionamiento del Estado y de los negocios. A ello sumamos una generación de abogados
+              con sólida formación y vocación litigante, que asegura la continuidad y profundidad de
+              nuestro trabajo.
             </p>
           </div>
 

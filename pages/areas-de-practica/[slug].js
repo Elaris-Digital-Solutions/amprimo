@@ -1,21 +1,27 @@
-import Head from 'next/head'
+import Seo from '../../components/Seo'
 import Link from 'next/link'
 import Navbar     from '../../components/Navbar'
 import PageHeader from '../../components/PageHeader'
 import Footer     from '../../components/Footer'
 import { areas }  from '../../components/PracticeAreas'
+import { serviceSchema, breadcrumbSchema } from '../../lib/schema'
 
 export default function AreaPage({ area, prev, next }) {
   return (
     <>
-      <Head>
-        <title>{area.title} | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content={area.description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title={`${area.title} | Amprimo, Flury, Barboza & Rodríguez Abogados`}
+        description={area.description}
+        path={`/areas-de-practica/${area.slug}`}
+        schema={[
+          serviceSchema(area),
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Áreas de Práctica', path: '/areas-de-practica' },
+            { name: area.title, path: `/areas-de-practica/${area.slug}` },
+          ]),
+        ]}
+      />
 
       <Navbar />
 

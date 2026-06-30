@@ -1,10 +1,12 @@
-import Head from 'next/head'
+import Seo from '../../components/Seo'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { newsPosts, tagColors, getPostBySlug, getRelatedPosts } from '../../lib/newsPosts'
 import { hoverPrefetch } from '../../lib/prefetchHero'
+import { articleSchema, breadcrumbSchema } from '../../lib/schema'
+import { absoluteUrl } from '../../lib/siteConfig'
 
 export async function getStaticPaths() {
   return {
@@ -130,32 +132,26 @@ export default function NewsDetail({ post, related }) {
     return () => observer.disconnect()
   }, [post.slug])
 
-  const ogTitle = `${post.title} | Amprimo Abogados`
-  const url = `https://amprimo.netlify.app/noticias/${post.slug}`
+  const path = `/noticias/${post.slug}`
+  const url = absoluteUrl(path)
 
   return (
     <>
-      <Head>
-        <title>{post.title} | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content={post.excerpt} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={url} />
-        <meta property="og:title" content={ogTitle} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="Amprimo Abogados" />
-        <meta property="og:locale" content="es_PE" />
-        <meta property="article:published_time" content={post.date} />
-        <meta property="article:section" content={post.category} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title={`${post.title} | Amprimo, Flury, Barboza & Rodríguez Abogados`}
+        description={post.excerpt}
+        path={path}
+        type="article"
+        article={{ publishedTime: post.isoDate, section: post.category }}
+        schema={[
+          articleSchema(post),
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Noticias', path: '/noticias' },
+            { name: post.title, path },
+          ]),
+        ]}
+      />
 
       <Navbar />
 

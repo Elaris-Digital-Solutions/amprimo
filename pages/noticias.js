@@ -1,32 +1,28 @@
-import Head from 'next/head'
+import Seo from '../components/Seo'
 import Navbar from '../components/Navbar'
 import Blog   from '../components/Blog'
 import Footer from '../components/Footer'
+import { newsPosts } from '../lib/newsPosts'
+import { breadcrumbSchema, itemListSchema } from '../lib/schema'
 
 export default function NoticiasPage() {
   return (
     <>
-      <Head>
-        <title>Noticias | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Mantente al día con las últimas noticias, actualizaciones legales y reconocimientos del estudio Amprimo, Flury, Barboza & Rodríguez Abogados." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://amprimo.netlify.app/noticias" />
-        <meta property="og:title" content="Noticias | Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:description" content="Mantente al día con las últimas noticias, actualizaciones legales y reconocimientos del estudio Amprimo, Flury, Barboza & Rodríguez Abogados." />
-        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:site_name" content="Amprimo Abogados" />
-        <meta property="og:locale" content="es_PE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <link rel="preload" as="image" href="/images/hero-noticias.webp" type="image/webp" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title="Noticias & Actualizaciones | Amprimo, Flury, Barboza & Rodríguez Abogados"
+        description="Noticias, actualizaciones legales y reconocimientos del Estudio Amprimo (Amprimo, Flury, Barboza & Rodríguez Abogados). Análisis del derecho constitucional, tributario, laboral y corporativo en el Perú."
+        path="/noticias"
+        preloadImage="/images/hero-noticias.webp"
+        schema={[
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Noticias', path: '/noticias' },
+          ]),
+          itemListSchema(
+            newsPosts.map(p => ({ name: p.title, path: `/noticias/${p.slug}` }))
+          ),
+        ]}
+      />
 
       <Navbar />
 

@@ -1,31 +1,25 @@
-import Head from 'next/head'
+import Seo from '../components/Seo'
 import Navbar  from '../components/Navbar'
 import Contact from '../components/Contact'
 import Footer  from '../components/Footer'
+import { organizationSchema, breadcrumbSchema } from '../lib/schema'
 
 export default function ContactanosPage() {
   return (
     <>
-      <Head>
-        <title>Contáctanos | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Si te encuentras ante alguna consulta o necesitas abordar un asunto legal, el equipo de Amprimo, Flury, Barboza & Rodríguez Abogados está preparado para brindarte asistencia y orientación." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://amprimo.netlify.app/contactanos" />
-        <meta property="og:title" content="Contáctanos | Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:description" content="El equipo de Amprimo, Flury, Barboza & Rodríguez Abogados está preparado para brindarte asistencia y orientación legal." />
-        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:site_name" content="Amprimo Abogados" />
-        <meta property="og:locale" content="es_PE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <link rel="preload" as="image" href="/images/hero-contactanos.webp" type="image/webp" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+      <Seo
+        title="Contáctanos | Amprimo, Flury, Barboza & Rodríguez Abogados"
+        description="Contacta al Estudio Amprimo en Lima, Perú. Oficinas en el Centro Empresarial Panorama, Santiago de Surco. Teléfono (01) 208 0130. El equipo está preparado para brindarte asistencia y orientación legal."
+        path="/contactanos"
+        preloadImage="/images/hero-contactanos.webp"
+        schema={[
+          organizationSchema(),
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Contáctanos', path: '/contactanos' },
+          ]),
+        ]}
+      >
         {/* Preconnects para Google Maps */}
         <link rel="preconnect" href="https://maps.google.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://maps.googleapis.com" crossOrigin="anonymous" />
@@ -33,7 +27,7 @@ export default function ContactanosPage() {
         <link rel="dns-prefetch" href="//maps.google.com" />
         <link rel="dns-prefetch" href="//maps.googleapis.com" />
         <link rel="dns-prefetch" href="//maps.gstatic.com" />
-      </Head>
+      </Seo>
 
       <Navbar />
 

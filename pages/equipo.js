@@ -1,32 +1,28 @@
-import Head from 'next/head'
+import Seo from '../components/Seo'
 import Navbar from '../components/Navbar'
 import Team   from '../components/Team'
 import Footer from '../components/Footer'
+import { allLawyers, toSlug } from '../data/lawyers'
+import { breadcrumbSchema, itemListSchema } from '../lib/schema'
 
 export default function EquipoPage() {
   return (
     <>
-      <Head>
-        <title>Equipo | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content="Conoce a los socios y asociados de Amprimo, Flury, Barboza & Rodríguez Abogados. Un equipo de abogados con amplia experiencia en todas las áreas del derecho." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://amprimo.netlify.app/equipo" />
-        <meta property="og:title" content="Equipo | Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:description" content="Conoce a los socios y asociados de Amprimo, Flury, Barboza & Rodríguez Abogados. Amplia experiencia en todas las áreas del derecho." />
-        <meta property="og:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Amprimo, Flury, Barboza & Rodríguez Abogados" />
-        <meta property="og:site_name" content="Amprimo Abogados" />
-        <meta property="og:locale" content="es_PE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://amprimo.netlify.app/og-image.jpg" />
-        <link rel="preload" as="image" href="/images/hero-contactanos.webp" type="image/webp" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title="Nuestro Equipo | Amprimo, Flury, Barboza & Rodríguez Abogados"
+        description="Diecisiete abogados con sólida formación y experiencia en el sector público y privado. Conoce a los socios y asociados del Estudio Amprimo, especialistas en todas las áreas del derecho."
+        path="/equipo"
+        preloadImage="/images/hero-contactanos.webp"
+        schema={[
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Nuestro Equipo', path: '/equipo' },
+          ]),
+          itemListSchema(
+            allLawyers.map(l => ({ name: l.name, path: `/equipo/${toSlug(l.name)}` }))
+          ),
+        ]}
+      />
 
       <Navbar />
 
@@ -49,9 +45,8 @@ export default function EquipoPage() {
               Nuestro Equipo
             </h1>
             <p className="text-white/55 text-base lg:text-lg leading-relaxed mt-4 max-w-3xl">
-              Nuestra excelencia se sustenta en la sólida formación y amplia experiencia de nuestros
-              abogados, quienes han ocupado cargos de alta responsabilidad en la administración pública
-              y el sector privado.
+              Diecisiete abogados con sólida formación y experiencia en el sector público y privado,
+              unidos por una misma forma de ejercer el derecho: con rigor, profundidad y compromiso total.
             </p>
           </div>
         </section>

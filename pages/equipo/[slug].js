@@ -1,8 +1,9 @@
-import Head from 'next/head'
+import Seo from '../../components/Seo'
 import Link from 'next/link'
 import Navbar  from '../../components/Navbar'
 import Footer  from '../../components/Footer'
 import { getLawyerBySlug, getAllSlugs, toSlug, allLawyers } from '../../data/lawyers'
+import { personSchema, breadcrumbSchema } from '../../lib/schema'
 
 export async function getStaticPaths() {
   const slugs = getAllSlugs()
@@ -34,17 +35,24 @@ export default function LawyerProfile({ lawyer, prevLawyer, nextLawyer }) {
   const educationParagraphs = lawyer.education ? lawyer.education.trim().split('\n\n') : []
   const bioParagraphs = lawyer.bio ? lawyer.bio.trim().split('\n\n').filter(Boolean) : []
   const allParagraphs = [...educationParagraphs, ...bioParagraphs]
+  const slug = toSlug(lawyer.name)
 
   return (
     <>
-      <Head>
-        <title>{lawyer.name} | Amprimo, Flury, Barboza &amp; Rodríguez Abogados</title>
-        <meta name="description" content={`Perfil de ${lawyer.name}, ${lawyer.role} en Amprimo, Flury, Barboza & Rodríguez Abogados. ${lawyer.speciality}.`} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </Head>
+      <Seo
+        title={`${lawyer.name} — ${lawyer.role} | Amprimo, Flury, Barboza & Rodríguez Abogados`}
+        description={`${lawyer.name}, ${lawyer.role} del Estudio Amprimo (Amprimo, Flury, Barboza & Rodríguez Abogados). Especialista en ${lawyer.speciality}.`}
+        path={`/equipo/${slug}`}
+        type="profile"
+        schema={[
+          personSchema(lawyer, slug),
+          breadcrumbSchema([
+            { name: 'Inicio', path: '/' },
+            { name: 'Nuestro Equipo', path: '/equipo' },
+            { name: lawyer.name, path: `/equipo/${slug}` },
+          ]),
+        ]}
+      />
 
       <Navbar />
 

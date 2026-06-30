@@ -1,0 +1,36 @@
+# robots.txt — Amprimo, Flury, Barboza & Rodríguez Abogados
+# Generado por scripts/generate-seo.mjs
+
+User-agent: *
+Allow: /
+Disallow: /__forms.html
+
+# Rastreadores de motores generativos (IA) — bienvenidos
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://amprimoabogados.com/sitemap.xml
