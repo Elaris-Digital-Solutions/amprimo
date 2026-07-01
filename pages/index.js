@@ -14,7 +14,7 @@ export default function Home() {
         title="Amprimo, Flury, Barboza & Rodríguez Abogados | Estudio de Abogados en Lima, Perú"
         description="Estudio Amprimo (Amprimo, Flury, Barboza & Rodríguez Abogados): firma de alto perfil en Lima, Perú, especializada en derecho constitucional, arbitraje, litigios y asesoría corporativa. Reconocida por Chambers & Partners, Legal 500, Best Lawyers y Leaders League."
         path="/"
-        preloadImage="/images/hero-inicio.webp"
+        preloadImage="/images/inicio-hero.webp"
         schema={[organizationSchema(), websiteSchema()]}
       />
 

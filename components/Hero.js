@@ -46,7 +46,7 @@ export default function Hero() {
 
       {/* Fondo: imagen hero — TODO (obs. 4): evaluar una foto de fondo alternativa que cuadre mejor */}
       <img
-        src="/images/hero-inicio.webp"
+        src="/images/inicio-hero.webp"
         alt=""
         fetchpriority="high"
         className="absolute inset-0 w-full h-full object-cover object-[center_35%]"
